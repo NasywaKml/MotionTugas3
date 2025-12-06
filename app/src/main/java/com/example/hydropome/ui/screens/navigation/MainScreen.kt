@@ -1,4 +1,4 @@
-package com.example.hydropome.ui.navigation
+package com.example.hydropome.ui.screens.navigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
@@ -20,20 +20,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.hydropome.R
-import com.example.hydropome.ui.screens.Homepage
-import com.example.hydropome.ui.screens.MarketPlace
-import com.example.hydropome.ui.screens.PantauTanaman
+import com.example.hydropome.ui.screens.homepage.Homepage
+import com.example.hydropome.ui.screens.marketplace.MarketPlace
+
 import com.example.hydropome.ui.screens.Profil.Profil
+import com.example.hydropome.ui.screens.pantautanaman.PantauTanamanList
+import com.example.hydropome.ui.screens.pantautanaman.PantauTanamanTask
 
 @Composable
 fun MainScreen(
     username: String,
-    navController: NavController
+    navController: NavController,
+    initialIndex : Int = 0
 ){
     val items = listOf("Beranda","Pantau Tanaman", "Marketplace", "Profil")
     val selectedIcons = listOf(R.drawable.home_hijau, R.drawable.pohon_hijau, R.drawable.bag_hijau, R.drawable.akunhijau)
     val unselectedIcons = listOf(R.drawable.home_abu, R.drawable.pohon_abu, R.drawable.bag_abu, R.drawable.akunabu)
-    var selectedItem by remember { mutableStateOf(0) }
+    var selectedItem by remember { mutableStateOf(initialIndex) } //ubah biar di navigasi bisa ke index tertentu
 
     Scaffold (
         bottomBar = {
@@ -76,11 +79,12 @@ fun MainScreen(
         when (selectedItem) {
             0 -> Homepage(
                 username = username,
-                innerPadding = innerPadding
+                innerPadding = innerPadding,
+                navController = navController,
             )
 
-            1 -> PantauTanaman(
-                username = username,
+            1 -> PantauTanamanList(
+                navController = navController,
                 innerPadding = innerPadding
             )
 
@@ -91,7 +95,8 @@ fun MainScreen(
 
             3 -> Profil(
                 username = username,
-                innerPadding = innerPadding
+                innerPadding = innerPadding,
+                navController = navController
             )
         }
 

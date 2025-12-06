@@ -46,11 +46,11 @@ fun Onboard2(navController: NavHostController) {
         Box(
             modifier = Modifier.fillMaxWidth()
         ) {
-            CurvedImage(imageRes = R.drawable.onboard1)
+            CurvedImage(imageRes = R.drawable.onboard2)
 
             Button(
                 onClick = {
-                    navController.navigate("Register")
+                    navController.navigate("Login")
                 },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEFF7F3)),
                 modifier = Modifier
@@ -100,7 +100,7 @@ fun Onboard2(navController: NavHostController) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.buletabu),
-                    contentDescription = "bulethabu",
+                    contentDescription = "buletabu",
                     modifier = Modifier.size(20.dp)
                 )
                 Spacer(modifier = Modifier.width(8.dp))
@@ -149,7 +149,7 @@ fun Onboard2(navController: NavHostController) {
                         .clip(RoundedCornerShape(20.dp))
                         .background(Color.White.copy(alpha = 0.15f))
                         .clickable {
-                            navController.navigate("Main")
+                            navController.navigate("Login")
                         },
                     contentAlignment = Alignment.Center
                 ) {
